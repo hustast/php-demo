@@ -1,0 +1,16 @@
+body {
+	margin-top: 5%;
+	background-color: #f0ffff;
+}
+
+label {
+	font-weight: bold;
+}
+
+a {
+	font: black;
+}
+#check{
+	width: 20%;
+	
+}
