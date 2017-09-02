@@ -20,6 +20,10 @@ login ： 登录处理 和 查询页面
 
 ​	->action.php 登录处理查询html
 
+mysql：从excl中生成mysql数据库
+
+​           ->build.php 生成成绩数据库
+
 -> index.php  登录前端页面
 
 -> signup.php 注册前端页面
