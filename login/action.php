@@ -1,6 +1,10 @@
 <?php 
 session_start();
+<<<<<<< HEAD
 require_once('/conn/connect.php');
+=======
+require_once('connect.php');
+>>>>>>> c61558f60aff06e04176272be27e2d9eb840b87c
 
 @$studentid = $_POST['studentid'];
 @$passwd	= $_POST['password'];
