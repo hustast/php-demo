@@ -29,7 +29,7 @@
 <div class="container">
 	<img src="img/logo.jpg" class="img" >
 	<h3>Sign in to EIC,HUST</h3>
-	<form class="form-horizontal col-sm-5" id = "form-main" onsubmit="return Checked();" action="action.php" method="post" name="myform" >
+	<form class="form-horizontal col-sm-5" id = "form-main" onsubmit="return Checked();" action="login/action.php" method="post" name="myform" >
   		<div class="form-group">
     		<label for="studentid">学号：</label>
     		<input type="text" class="form-control" id="studentid" placeholder="学号：U2015×××××" name="studentid" maxlength="10">

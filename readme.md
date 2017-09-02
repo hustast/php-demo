@@ -2,29 +2,29 @@
 
 conn : mysql 数据库链接文件
 
-​	->config.php 数据库密码，用户名
+	->config.php 数据库密码，用户名
 
-​	->connect.php 链接
+	->connect.php 链接
 
 css  ：前端样式
 
-​	->bootrap.css my.css
+	->bootrap.css my.css
 
 identify： 验证码  发送邮件
 
-​	->img.php 生成验证码
+	->img.php 生成验证码
 
-​	->mail.php 取得学号，邮箱，发送验证邮件
-    ->src  phpmailer 配置文件
+	->mail.php 取得学号，邮箱，发送验证邮件
+	->src  phpmailer 配置文件
 
 login ： 登录处理 和 查询页面
 
-​	->action.php 登录处理查询html
-    ->register.php 注册处理
+	->action.php 登录处理查询html
+	->register.php 注册处理
 
 mysql：从excl中生成mysql数据库
 
-​           ->build.php 生成成绩数据库
+          ->build.php 生成成绩数据库
 
 -> index.php  登录前端页面
 
@@ -55,7 +55,7 @@ mysql：从excl中生成mysql数据库
 * 在signup.php中补充邮箱验证模块
 * 在signup.php中更新密码及用户名
 * 在mysql/build.php中建立成绩数据库（excel cvs文件处理--->mysql）
-* ​
+* 
 
 
 
