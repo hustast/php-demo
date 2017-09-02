@@ -5,13 +5,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/my.css">
-	<title>登录页面</title>
+	<title>注册页面</title>
 
 </head>
 <body>
-<div class="
-container">
-	<form class="form-horizontal" action="signup.php" method="post">
+	<div class="container">
+	<img src="img/logo.jpg" class="img" >
+	<h3>Sign up to EIC,HUST</h3>
+	<form class="form-horizontal col-sm-5" id="form-main" action="" method="post">
   		<div class="form-group">
     		<label for="studentid">学号：</label>
     		<input type="text" class="form-control" id="studentid" placeholder="学号：U×××××××××" name="studentid">
@@ -19,17 +20,21 @@ container">
   
 
 	  	<div class="form-group">
-		    <label for="password">密码</label>
+		    <label for="password">密码：</label>
 		    <input type="password" class="form-control" id="password" placeholder="请输入您的密码" name="password">
+		</div>
+	  	<div class="form-group">
+		    <label for="passwordrepeat">重复密码</label>
+		    <input type="password" class="form-control" id="passwordrepeat" placeholder="请重新输入您的密码" name="passwordrepeat">
 		</div>
 
 		<div class="form-group">
 			<label for="check">验证码</label>
-			<a href="signup.php"><img src="img.php"></a>
+			<a href="signup.php"><img src="identify/img.php"></a>
 			<input type="text" name="image" class="form-control" id="image" placeholder="输入图中验证码">
 		</div>
-	<button type="submit" class="btn btn-default" name="signup">提交注册</button>
-	<button type="reset" class="btn btn-default">重置</button>
+	<button type="submit" class="btn btn-info" name="signup">提交注册</button>
+	<button type="reset" class="btn btn-info">重置</button>
 	</form>
 </div>
 
@@ -40,7 +45,7 @@ container">
 <?php 
 @session_start();
 
-require_once('connect.php');
+require_once('conn/connect.php');
 @$studentid    = $_POST['studentid'];
 @$passwd	   = $_POST['password'];
 @$submit	   = $_POST['signup'];
@@ -50,16 +55,20 @@ $image2 = $_SESSION['pic'];//取得图片验证码中的四个随机数
 
 
 if (isset($submit)) {
-	if ($image == $image2) {									// 验证码正确
-		$insert_in = "INSERT INTO EIC (studentid, password, grade)
-				  VALUES ( '$studentid', '$passwd', 90 )";
-			if ( $con->query($insert_in) ) {    //执行sql语句
-				echo "<script>alert('注册成功');window.location= 'index.php';</script>";
-			} else {
-				echo "insert error".$con->error;
-			}
-	} else {
-		echo "<script>alert('验证码错误！');</script>";
+	if ($_POST['password'] == $_POST['passwordrepeat']) {
+		if ($image == $image2 ) {									// 验证码正确
+			$insert_in = "INSERT INTO EIC (studentid, password, grade)
+					  VALUES ( '$studentid', '$passwd', 90 )";
+				if ( $con->query($insert_in) ) {    //执行sql语句
+					echo "<script>alert('注册成功');window.location= 'index.php';</script>";
+				} else {
+					echo "insert error".$con->error;
+				}
+		} else {
+			echo "<script>alert('验证码错误！');</script>";
+		}
+	}else {
+		echo "<script>alert('两次密码输入不一致！');</script>";
 	}
 }
 ?>

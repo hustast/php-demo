@@ -1,15 +1,44 @@
 body {
-	margin-top: 5%;
-	background-color: #f0ffff;
+	margin-top: 0%;
 }
 
 label {
+	font-size: small;
 	font-weight: bold;
 }
 
 a {
 	font: black;
 }
+
+.img{
+	margin: auto;
+	margin-bottom: 0%;
+	display: block;
+	width: 10%;
+
+}
+
+h3{
+	text-align: center;
+	margin-bottom: 2%; 
+    font-family:Arial, Helvetica, sans-serif; 
+}
+
+p {
+	margin-top: 2%;
+	font-family: "Georgia", Tahoma, Sans-Serif;
+	font-weight: bold;
+}
+
+#form-main {
+	border-style: solid;
+	border-color: grey;
+	border-radius: 5%;
+	margin: auto;
+	padding: 2%;
+}
+
 #check{
 	width: 20%;
 	
