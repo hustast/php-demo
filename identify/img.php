@@ -6,6 +6,7 @@
 	{
         $code .= $pattern{mt_rand(0, 35)};
 	}
+
 	$_SESSION['pic'] = $code;//将随机数保存到session
 	$im = imagecreatetruecolor(60,20);//创建一张宽60高20像素的图片
 	$bg = imagecolorallocate($im,222,222,222);//设置图片的背景颜色

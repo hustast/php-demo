@@ -1,10 +1,7 @@
 <?php 
 session_start();
-<<<<<<< HEAD
-require_once('/conn/connect.php');
-=======
-require_once('connect.php');
->>>>>>> c61558f60aff06e04176272be27e2d9eb840b87c
+
+require_once('conn/connect.php');
 
 @$studentid = $_POST['studentid'];
 @$passwd	= $_POST['password'];
@@ -21,7 +18,9 @@ $image2 = $_SESSION['pic'];//取得图片验证码中的四个随机数
 
 if($stu_id == $studentid && $pass == $passwd && $image == $image2 )//验证用户名和密码是否一致
 {
-	echo "<script>window.location= 'hello.html';</script>";//用户名和密码一致，跳转到指定页面
+    //打印成绩单
+    echo "here are your grade </b>";
+	//echo "<script>window.location= 'hello.html';</script>";//用户名和密码一致，跳转到指定页面
 }
 else
 {

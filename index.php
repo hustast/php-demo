@@ -32,12 +32,12 @@
 	<form class="form-horizontal col-sm-5" id = "form-main" onsubmit="return Checked();" action="action.php" method="post" name="myform" >
   		<div class="form-group">
     		<label for="studentid">学号：</label>
-    		<input type="text" class="form-control" id="studentid" placeholder="学号：U×××××××××" name="studentid">
+    		<input type="text" class="form-control" id="studentid" placeholder="学号：U2015×××××" name="studentid" maxlength="10">
   		</div>
  
 	  	<div class="form-group">
 		    <label for="password">密码</label>
-		    <input type="password" class="form-control" id="password" placeholder="请输入您的密码" name="password">
+		    <input type="password" class="form-control" id="password" placeholder="请输入您的密码" name="password" maxlength="20">
 		</div>
 
 		<div class="form-group">

@@ -15,17 +15,18 @@
 	<form class="form-horizontal col-sm-5" id="form-main" action="" method="post">
   		<div class="form-group">
     		<label for="studentid">学号：</label>
-    		<input type="text" class="form-control" id="studentid" placeholder="学号：U×××××××××" name="studentid">
+    		<input type="text" class="form-control" id="studentid" placeholder="学号：U2015×××××" name="studentid" maxlength="10">
   		</div>
   
 
 	  	<div class="form-group">
 		    <label for="password">密码：</label>
-		    <input type="password" class="form-control" id="password" placeholder="请输入您的密码" name="password">
+		    <input type="password" class="form-control" id="password" placeholder="请输入您的密码" name="password" maxlength="20">
 		</div>
 	  	<div class="form-group">
 		    <label for="passwordrepeat">重复密码</label>
-		    <input type="password" class="form-control" id="passwordrepeat" placeholder="请重新输入您的密码" name="passwordrepeat">
+		    <input type="password" class="form-control" id="passwordrepeat" placeholder="请重新输入您的密码" name="passwordrepeat"
+                   maxlength="20">
 		</div>
 
 		<div class="form-group">
@@ -57,19 +58,29 @@ $image2 = $_SESSION['pic'];//取得图片验证码中的四个随机数
 if (isset($submit)) {
 	if ($_POST['password'] == $_POST['passwordrepeat']) {
 		if ($image == $image2 ) {// 验证码正确
-
+            //邮箱验证
+            /*
+             *
+             *
+             *
+             *
+            */
             //对密码进行加密
             $pwd_md5 = md5($passwd);
             $md5_sha = hash('sha256',$pwd_md5);
             $sha_pwd_hash = password_hash($md5_sha,PASSWORD_DEFAULT);
 
-			$insert_in = "INSERT INTO EIC (studentid, password, grade)
-					  VALUES ( '$studentid', '$passwd', 90 )";
-				if ( $con->query($insert_in) ) {    //执行sql语句
+            //将登录信息更新
+			$update = "UPDATE EIC  SET password  = 
+                                       grade     = 
+                                 WHERE studentid =  ";
+
+				if ( $con->query($update) ) {    //执行sql语句
 					echo "<script>alert('注册成功');window.location= 'index.php';</script>";
 				} else {
 					echo "insert error".$con->error;
 				}
+
 		} else {
 			echo "<script>alert('验证码错误！');</script>";
 		}
