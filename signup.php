@@ -56,7 +56,13 @@ $image2 = $_SESSION['pic'];//取得图片验证码中的四个随机数
 
 if (isset($submit)) {
 	if ($_POST['password'] == $_POST['passwordrepeat']) {
-		if ($image == $image2 ) {									// 验证码正确
+		if ($image == $image2 ) {// 验证码正确
+
+            //对密码进行加密
+            $pwd_md5 = md5($passwd);
+            $md5_sha = hash('sha256',$pwd_md5);
+            $sha_pwd_hash = password_hash($md5_sha,PASSWORD_DEFAULT);
+
 			$insert_in = "INSERT INTO EIC (studentid, password, grade)
 					  VALUES ( '$studentid', '$passwd', 90 )";
 				if ( $con->query($insert_in) ) {    //执行sql语句

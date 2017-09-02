@@ -38,7 +38,7 @@ login ： 登录处理 和 查询页面
 
 
 
-1.加密 md5+其他加密   防sql---暂定md5+sha256
+1.加密 md5+其他加密   防sql---暂定md5+sha256+pwd_hash
 
 2.验证邮箱 valid
 
