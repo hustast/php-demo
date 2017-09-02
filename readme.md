@@ -20,6 +20,8 @@ login ： 登录处理 和 查询页面
 
 ​	->action.php 登录处理查询html
 
+​	->register.php 处理注册
+
 -> index.php  登录前端页面
 
 -> signup.php 注册前端页面
@@ -28,7 +30,9 @@ login ： 登录处理 和 查询页面
 
 ####  log
 
-9.2    修改前端页面，加入学院logo
+9.2    修改前端页面，加入学院logo,设置密码不少于6位
+
+9.2    前后端分离,把signup.php 中 php分开到login/register.php
 
 
 
