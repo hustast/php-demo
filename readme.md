@@ -46,7 +46,9 @@ mysql：从excl中生成mysql数据库
 
 9.2   signup.php当成前端页面具体处理在login/register.php
 
+9.3   加入版权信息,改前端页面
 
+9.3   mysql/build.php 处理第二个表单
 
 
 
