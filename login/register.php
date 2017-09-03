@@ -2,6 +2,8 @@
 @session_start();
 
 require_once ('../conn/connect.php');
+require_once ('../mysql/build.php');
+
 @$studentid = $_POST['studentid'];
 @$passwd    = $_POST['password'];
 @$submit    = $_POST['signup'];
@@ -20,9 +22,13 @@ if (isset($submit)) {
 					$md5_sha      = hash('sha256', $pwd_md5);
 					$sha_pwd_hash = password_hash($md5_sha, PASSWORD_DEFAULT);
 
-					$insert_in = "INSERT INTO EIC (studentid, password, grade)
-							  VALUES ( '$studentid', '$passwd', 90 )";
-					if ($con->query($insert_in)) {//执行sql语句
+					//插入用户数据库
+                    $stmt = $con->prepare("INSERT INTO students (studentid, passwd) VALUES (:studentid, :passwd)");
+                    $stmt->bindParam(':studentid', $studentid);
+                    $stmt->bindParam(':passwd', $sha_pwd_hash);
+
+
+					if ($stmt->execute()) {//执行sql语句
 						echo "<script>alert('注册成功');window.location= 'index.php';</script>";
 					} else {
 						echo "insert error".$con->error;

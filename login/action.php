@@ -1,15 +1,17 @@
 <?php 
 session_start();
 
-require_once('conn/connect.php');
+require_once('../conn/connect.php');
+require_once ('../mysql/build.php');
 
 @$studentid = $_POST['studentid'];
 @$passwd	= $_POST['password'];
 
-$sql_check  = "SELECT * FROM EIC WHERE studentid = '$studentid'";
-$result     = $con->query($sql_check);
-
-$row 	    = $result->fetch_array(MYSQLI_BOTH);
+//匹配密码用户名
+$stmt = $con->prepare("SELECT * FROM students WHERE studentid = :studentid");
+$stmt->bindParam(':studentid', $studentid);
+$stmt->execute();
+$row 	    = $stmt->fetch(MYSQLI_BOTH);
 $stu_id     = $row['studentid'];
 $pass       = $row['password'];
 
@@ -19,8 +21,11 @@ $image2 = $_SESSION['pic'];//取得图片验证码中的四个随机数
 if($stu_id == $studentid && $pass == $passwd && $image == $image2 )//验证用户名和密码是否一致
 {
     //打印成绩单
-    echo "here are your grade </b>";
-	//echo "<script>window.location= 'hello.html';</script>";//用户名和密码一致，跳转到指定页面
+    $stmt = $con->prepare("SELECT * FROM grades WHERE studentid = :studentid");
+    $stmt->bindParam(':studentid', $studentid);
+    $stmt->execute();
+    $row 	    = $stmt->fetch(MYSQLI_BOTH);
+    //其余参照14 15 行
 }
 else
 {
