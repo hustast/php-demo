@@ -3,8 +3,8 @@
     require_once 'src/PHPMailer.php';    
     require_once 'src/SMTP.php';
 
-    $studentid = $_POST['studentid'];
-    //$studentid = "U201613443";   用于测试
+
+    $studentid = "U201613443";   //用于测试
     $studentid = strtolower($studentid);
     $toemail   = $studentid."@hust.edu.cn";//拼接成hust邮箱
 

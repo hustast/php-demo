@@ -11,6 +11,8 @@ require_once ('../mysql/build.php');
 @$image = strtoupper($_POST['image']);//取得用户输入的图片验证码并转换为大写
 $image2 = $_SESSION['pic'];//取得图片验证码中的四个随机数
 
+require_once "../identify/mail.php";
+
 if (isset($submit)) {
 	if (strlen( $_POST["password"] ) >= 6) {
 		if ($_POST['studentid'] != "" || $_POST['password'] != "") {
@@ -20,16 +22,16 @@ if (isset($submit)) {
 					//对密码进行加密
 					$pwd_md5      = md5($passwd);
 					$md5_sha      = hash('sha256', $pwd_md5);
-					$sha_pwd_hash = password_hash($md5_sha, PASSWORD_DEFAULT);
+					//$sha_pwd_hash = password_hash($md5_sha, PASSWORD_DEFAULT);
 
 					//插入用户数据库
                     $stmt = $con->prepare("INSERT INTO students (studentid, passwd) VALUES (:studentid, :passwd)");
                     $stmt->bindParam(':studentid', $studentid);
-                    $stmt->bindParam(':passwd', $sha_pwd_hash);
+                    $stmt->bindParam(':passwd', $md5_sha);
 
 
 					if ($stmt->execute()) {//执行sql语句
-						echo "<script>alert('注册成功');window.location= 'index.php';</script>";
+						echo "<script>alert('注册成功');window.location= '../index.php';</script>";
 					} else {
 						echo "insert error".$con->error;
 					}
