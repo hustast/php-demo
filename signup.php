@@ -12,7 +12,7 @@
 	<div class="container">
 	<img src="img/logo.jpg" class="img" >
 	<h3>Sign up to EIC,HUST</h3>
-	<form class="form-horizontal col-sm-4" id="form-main" action="login/register.php" method="post">
+	<form class="form-horizontal col-sm-4"  id="form-main" action="login/register.php" method="post">
   		<div class="form-group">
     		<label for="studentid">学号：</label>
     		<input type="text" class="form-control" id="studentid" placeholder="学号：U2015×××××" name="studentid" maxlength="10">
