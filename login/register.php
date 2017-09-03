@@ -11,7 +11,7 @@ require_once ('../mysql/build.php');
 @$image = strtoupper($_POST['image']);//取得用户输入的图片验证码并转换为大写
 $image2 = $_SESSION['pic'];//取得图片验证码中的四个随机数
 
-require_once "../identify/mail.php";
+
 
 if (isset($submit)) {
 	if (strlen( $_POST["password"] ) >= 6) {
@@ -31,7 +31,8 @@ if (isset($submit)) {
 
 
 					if ($stmt->execute()) {//执行sql语句
-						echo "<script>alert('注册成功');window.location= '../index.php';</script>";
+						require_once "../identify/mail.php";
+						echo "<script>alert('注册成功，请及时到华科邮箱(u2015×××××)进行验证!');window.location= '../index.php';</script>";
 					} else {
 						echo "insert error".$con->error;
 					}
