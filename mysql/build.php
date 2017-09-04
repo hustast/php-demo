@@ -15,4 +15,13 @@ $stmt = $con->prepare("CREATE TABLE grades (studentid   CHAR(10)  PRIMARY KEY NO
                                                       rank        INT       NOT NULL ) DEFAULT CHARSET=utf8");
 $stmt->execute();
 
+//模拟导入成绩
+$stmt = $con->prepare("LOAD DATA LOCAL INFILE 'grades.csv' INTO TABLE grades
+                                 FIELDS TERMINATED BY ',' 
+                                 ENCLOSED BY '\"' 
+                                 LINES TERMINATED BY '\r\n'");
+$stmt->execute();
+
+
+
 ?>

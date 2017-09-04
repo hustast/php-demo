@@ -27,13 +27,16 @@
 
 	    $mail->isHTML(true);  //格式html
 	    $mail->Subject = '您好，这是你的验证链接';
-	    $mail->Body    = '您好：<br />非常感谢您的注册,您的链接是   <br /><br /> HUST.ETC';
+	    $mail->Body    = "亲爱的".$studentid."：<br/><br/>请点击链接激活您的帐号，这是您的激活链接<br/> 
+    <a href='http://localhost/php-demo/identify/active.php?verify=".$studentid."' target= 
+'_blank'>http://localhost/php-demo/identify/active.php?verify=".$studentid."</a><br/> 
+    如果以上链接无法点击，请将它复制到你的浏览器地址栏中进入访问<br><br><br>HUST.EIC";
 	    $mail->AltBody = '';
 
 	    $mail->send();
-	  	echo '发送成功';
+	  	//echo '发送成功';
 	   
 	} catch (Exception $e) {
-	    echo '邮件发送失败了，请再试试吧';
+	    //echo '邮件发送失败了，请再试试吧';
 	    //echo 'Mailer Error: ' . $mail->ErrorInfo;
 	}
