@@ -16,18 +16,15 @@ $row    = $stmt->fetch(MYSQLI_BOTH);
 $stu_id = $row[1];
 $pass   = $row[2];
 
-echo $pass;
-echo "<br>";
 //页面密码加密
 $pwd_md5_      = md5($passwd);
 $md5_sha_      = hash('sha256', $pwd_md5_);
-//$sha_pwd_hash_ = password_hash($md5_sha_, PASSWORD_DEFAULT);
+$sha_pwd_hash_ = password_hash($md5_sha_, PASSWORD_DEFAULT);
 
-echo $md5_sha_;
 $image  = strtoupper($_POST['image']);//取得用户输入的图片验证码并转换为大写
 $image2 = $_SESSION['pic'];//取得图片验证码中的四个随机数
 
-if ($stu_id == $studentid && $pass == $md5_sha_ && $image == $image2)//验证用户名和密码是否一致
+if ($stu_id == $studentid && password_verify($sha_pwd_hash_,$pass) && $image == $image2)//验证用户名和密码是否一致
 {
 	//打印成绩单
 	$stmt = $con->prepare("SELECT * FROM grades WHERE studentid = :studentid");

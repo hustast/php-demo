@@ -22,19 +22,19 @@ if (isset($submit)) {
 					//对密码进行加密
 					$pwd_md5      = md5($passwd);
 					$md5_sha      = hash('sha256', $pwd_md5);
-					//$sha_pwd_hash = password_hash($md5_sha, PASSWORD_DEFAULT);
+					$sha_pwd_hash = password_hash($md5_sha, PASSWORD_DEFAULT);
 
 					//插入用户数据库
                     $stmt = $con->prepare("INSERT INTO students (studentid, passwd) VALUES (:studentid, :passwd)");
                     $stmt->bindParam(':studentid', $studentid);
-                    $stmt->bindParam(':passwd', $md5_sha);
+                    $stmt->bindParam(':passwd', $sha_pwd_hash);
 
 
 					if ($stmt->execute()) {//执行sql语句
 						require_once "../identify/mail.php";
 						echo "<script>alert('注册成功，请及时到华科邮箱(u2015×××××)进行验证!');window.location= '../index.php';</script>";
 					} else {
-						echo "insert error".$con->error;
+						echo "insert error".$con->errorInfo();
 					}
 				} else {
 					echo "<script>alert('验证码错误！');history.go(-1)</script>";

@@ -38,9 +38,7 @@ mysql：从excl中生成mysql数据库
 
 9.2    修改前端页面，加入学院logo
 
-9.2   加密方式暂定md5+sha256+pwd_hash
-
-9.2   signup.php中限制学号和密码的长度，密码20，学号10，试图防止SQL注入
+9.2   加密方式md5+sha256+pwd_hash
 
 9.2   实现发送邮件功能，测试u201613443@hust.edu.cn 正常    
 
@@ -50,14 +48,13 @@ mysql：从excl中生成mysql数据库
 
 9.3   mysql/build.php 处理第二个表单
 
-
+9.4解决password_hash(),无法验证的问题（使用password_verify）
 
 #####  问题
 
-* 防sql注入
-* conn/connect.php中 数据表EIC需重新设计
+* 防sql注入--ok
+* conn/connect.php中 数据表EIC需重新设计--ok
 * 在signup.php中补充邮箱验证模块
-* 在signup.php中更新密码及用户名
 * 在mysql/build.php中建立成绩数据库（excel cvs文件处理--->mysql）
 * 
 
