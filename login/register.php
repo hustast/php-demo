@@ -25,7 +25,7 @@ if (isset($submit)) {
 					$sha_pwd_hash = password_hash($md5_sha, PASSWORD_DEFAULT);
 
 					//插入用户数据库
-                    $stmt = $con->prepare("INSERT INTO students (studentid, passwd) VALUES (:studentid, :passwd)");
+                    $stmt = $con->prepare("INSERT INTO students (studentid, passwd,registed) VALUES (:studentid, :passwd,1)");
                     $stmt->bindParam(':studentid', $studentid);
                     $stmt->bindParam(':passwd', $sha_pwd_hash);
 
