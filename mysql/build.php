@@ -1,5 +1,7 @@
 <?php
+header("Content-type: text/html; charset=utf-8");
 require_once ('../conn/connect.php');
+
 
 //创建用户表
 $stmt = $con->prepare("CREATE TABLE students (id          INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -21,5 +23,7 @@ $stmt = $con->prepare("LOAD DATA LOCAL INFILE 'grades.csv' INTO TABLE grades
                                  ENCLOSED BY '\"' 
                                  LINES TERMINATED BY '\r\n'");
 $stmt->execute();
+
+
 
 ?>

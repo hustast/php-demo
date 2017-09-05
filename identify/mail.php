@@ -3,6 +3,8 @@
     require_once 'src/PHPMailer.php';    
     require_once 'src/SMTP.php';
 
+
+   // $studentid = "U201613443";   //用于测试
     $studentid = strtolower($studentid);
     $toemail   = $studentid."@hust.edu.cn";//拼接成hust邮箱
 
@@ -26,7 +28,7 @@
 	    $mail->isHTML(true);  //格式html
 	    $mail->Subject = '您好，这是你的验证链接';
 
-	    $id_base = base64_encode($studentid);//学号加密
+	    $id_base = base64_encode($studentid);
 	    $mail->Body    = "亲爱的".$studentid."：<br/><br/>请点击链接激活您的帐号，这是您的激活链接<br/> 
     <a href='http://39.108.208.211/php-demo/identify/active.php?verify=".$id_base."' target= 
 '_blank'>http://39.108.208.211/php-demo/identify/active.php?verify=".$id_base."</a><br/> 

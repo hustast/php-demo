@@ -38,7 +38,7 @@
 	<button type="reset" class="btn btn-info">重置</button>
 	</form>
 
-	<p class="footer">2017 © Powered by EIC 科协技术部  All rights reserved.</p>
+	<p class="footer">2017 © Powered by 科协技术部  All rights reserved.</p>
 </div>
 
 

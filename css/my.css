@@ -16,8 +16,7 @@ a {
 	margin: auto;
 	margin-bottom: 0%;
 	display: block;
-	width: 10%;
-
+	width: 110px;
 }
 
 h3{
@@ -38,7 +37,7 @@ p {
 	border-color: grey;
 	border-radius: 5%;
 	margin: auto;
-	padding: 2%;
+	padding: 20px;
 }
 
 #check{
@@ -54,7 +53,7 @@ p {
 }
 
 .check {
-	margin-left: 2%;
+	margin-left: 15px;
 	width: 20%;
 	height: 12%;
 }
