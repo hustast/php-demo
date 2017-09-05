@@ -22,6 +22,4 @@ $stmt = $con->prepare("LOAD DATA LOCAL INFILE 'grades.csv' INTO TABLE grades
                                  LINES TERMINATED BY '\r\n'");
 $stmt->execute();
 
-
-
 ?>

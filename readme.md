@@ -16,6 +16,7 @@ identify： 验证码  发送邮件
 
 	->mail.php 取得学号，邮箱，发送验证邮件
 	->src  phpmailer 配置文件
+	-> active.php 处理验证链接
 
 login ： 登录处理 和 查询页面
 
@@ -27,6 +28,7 @@ mysql：从excl中生成mysql数据库
           ->build.php 生成成绩数据库
           其中students为学生学号密码表
              grades为成绩表
+          ->grades.csv 成绩文件
 
 -> index.php  登录前端页面
 
@@ -52,14 +54,49 @@ mysql：从excl中生成mysql数据库
 
 #####  问题
 
-* 防sql注入--ok
-* conn/connect.php中 数据表EIC需重新设计--ok
-* 在signup.php中补充邮箱验证模块
-* 在mysql/build.php中建立成绩数据库（excel cvs文件处理--->mysql）
-* 
+* 细节处理
+* 成绩数据库导入
 
 
+# 思路
 
+## 需求
+
+**成绩排名查询系统 涉及注册、登录、查询 **
+
+## 架构
+
+HTML      PHP      MySQL
+
+## 思路
+
+* 用学号+密码+验证码注册
+
+* 利用hust学生邮箱验证
+
+* 成绩表 excel->csv->mysql
+
+  ​
+
+##细节
+
+* 前端页面参考GitHub登录界面，使用bootstrap框架
+
+* 验证码：随机生成四位数，生成一张图片，生成干扰线条及噪点，合成图片
+
+* 利用PHP的PDO对象防止sql注入
+
+* 注册：填写学号+密码，并将密码用3层hash函数加密后存入数据库
+
+* 验证邮件：利用库PHPMailer.php , SMTP.php。注册发件邮箱，向hust邮箱发送验证邮件
+
+  ```
+  http://39.108.208.211/php-demo/identify/active.php?verify=".$id_base."
+  ```
+
+* 登录：查询数据库，验证账号密码是否匹配 以及验证码是否正确
+
+* 成绩查询：利用学号检索数据库，输出成绩
 
 
 

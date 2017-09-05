@@ -3,14 +3,15 @@
 require_once "../conn/connect.php";
 $verify = stripslashes(trim($_GET['verify'])); 
 
+//解密链接中的学号
 $verify = base64_decode($verify);
+
 //找到studentid相同的行
 $verify = strtoupper($verify);
 $sql = "SELECT * FROM students WHERE studentid=:ver"; 
 $st = $con->prepare($sql);
 $st->bindParam(':ver', $verify);
 $st->execute();
-//$re = $st->fetch(PDO::FETCH_BOTH);
 
 if ($st) {
 	if ( $re['registed'] == 0 ) {
