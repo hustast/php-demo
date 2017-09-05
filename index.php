@@ -42,7 +42,7 @@
 
 		<div class="form-group">
 			<label for="check">验证码</label>
-			<a href="index.php"><img src = 'identify/img.php' class="check" /></a>
+			<a href="index.php"><img src = './identify/img.php' class="check" /></a>
 			<input type="text" name="image" class="form-control" id="image" placeholder="输入图中验证码">
 		</div>
 	<button type="submit" class="btn btn-info">登录</button>

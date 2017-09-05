@@ -25,14 +25,14 @@ if (isset($submit)) {
 					$sha_pwd_hash = password_hash($md5_sha, PASSWORD_DEFAULT);
 
 					//插入用户数据库
-                    $stmt = $con->prepare("INSERT INTO students (studentid, passwd,registed) VALUES (:studentid, :passwd,1)");
+                    $stmt = $con->prepare("INSERT INTO students (studentid, passwd) VALUES (:studentid, :passwd)");
                     $stmt->bindParam(':studentid', $studentid);
                     $stmt->bindParam(':passwd', $sha_pwd_hash);
 
 
 					if ($stmt->execute()) {//执行sql语句
 						require_once "../identify/mail.php";
-						echo "<script>alert('注册成功，请及时到华科邮箱(u2015×××××)进行验证!邮件可能误报垃圾邮件，请注意查收');window.location= '../index.php';</script>";
+						echo "<script>alert('注册成功，请及时到华科邮箱(u2015×××××)进行验证!邮件可能误报垃圾邮件，请注意查收'); window.location= '../index.php';</script>";
 					} else {
 						echo "insert error".$con->errorInfo();
 					}

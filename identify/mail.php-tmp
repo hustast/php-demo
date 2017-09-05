@@ -3,7 +3,7 @@
 require_once 'src/PHPMailer.php';
 require_once 'src/SMTP.php';
 
-$studentid = "U201613443";//用于测试
+// $studentid = "U201613443";   //用于测试
 $studentid = strtolower($studentid);
 $toemail   = $studentid."@hust.edu.cn";//拼接成hust邮箱
 
@@ -26,9 +26,11 @@ try {
 
 	$mail->isHTML(true);//格式html
 	$mail->Subject = '您好，这是你的验证链接';
-	$mail->Body    = "亲爱的".$studentid."：<br/><br/>请点击链接激活您的帐号，这是您的激活链接<br/>
-    <a href='http://localhost/php-demo/identify/active.php?verify=".$studentid."' target=
-'_blank'>http://localhost/php-demo/identify/active.php?verify=".$studentid."</a><br/>
+
+	$id_base    = base64_encode($studentid);
+	$mail->Body = "亲爱的".$studentid."：<br/><br/>请点击链接激活您的帐号，这是您的激活链接<br/>
+    <a href='http://39.108.208.211/php-demo/identify/active.php?verify=".$id_base."' target=
+'_blank'>http://39.108.208.211/php-demo/identify/active.php?verify=".$id_base."</a><br/>
     如果以上链接无法点击，请将它复制到你的浏览器地址栏中进入访问<br><br><br>HUST.EIC";
 	$mail->AltBody = '';
 

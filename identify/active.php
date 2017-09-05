@@ -3,15 +3,16 @@
 require_once "../conn/connect.php";
 $verify = stripslashes(trim($_GET['verify'])); 
 
+$verify = base64_decode($verify);
 //找到studentid相同的行
 $verify = strtoupper($verify);
 $sql = "SELECT * FROM students WHERE studentid=:ver"; 
 $st = $con->prepare($sql);
 $st->bindParam(':ver', $verify);
 $st->execute();
-$re = $st->fetch(PDO::FETCH_BOTH);
+//$re = $st->fetch(PDO::FETCH_BOTH);
 
-if ($re) {
+if ($st) {
 	if ( $re['registed'] == 0 ) {
 		//update设置registed为1
 		$sql_update = "UPDATE students SET registed = 1 WHERE studentid = :ver";

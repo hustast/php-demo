@@ -29,7 +29,7 @@ if (isset($submit)) {
 
 					if ($stmt->execute()) {//执行sql语句
 						require_once "../identify/mail.php";
-						echo "<script>alert('注册成功，请及时到华科邮箱(u2015×××××)进行验证!邮件可能误报垃圾邮件，请注意查收');window.location= '../index.php';</script>";
+						echo "<script>alert('注册成功，请及时到华科邮箱(u2015×××××)进行验证!邮件可能误报垃圾邮件，请注意查收'); window.location= '../index.php';</script>";
 
 					} else {
 						echo "insert error".$con->errorInfo();
